@@ -1,0 +1,3 @@
+https://github-joe.netlify.app/home
+https://github-joe.netlify.app/errorboundary
+https://github-joe.netlify.app/404page
