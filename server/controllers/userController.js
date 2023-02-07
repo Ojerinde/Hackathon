@@ -4,7 +4,7 @@ const jwt = require("../utils/jsonWeb")
 
 exports.signup = catchAsync(async (req, res,next) =>{
     const newUser = await userModel.create(req.body)
-    const token = jwt.signToken(newUser._id)
+    const token = jwt.signToken(newUser._id,req, res)
     res
         .status(201)
         .json({
@@ -23,7 +23,7 @@ exports.login = catchAsync(async (req, res,next) => {
         })
       }
 
-    const token = jwt.signToken(user._id)
+    const token = jwt.signToken(user._id, req, res)
     res
         .status(201)
         .json({
@@ -31,3 +31,11 @@ exports.login = catchAsync(async (req, res,next) => {
             message:"user logged in",
             token})
 })
+
+exports.logout = (req, res) => {
+    res.cookie('jwt', 'loggedout', {
+      expires: new Date(Date.now() + 10 * 1000),
+      httpOnly: true
+    });
+    res.status(200).json({ status: 'success' });
+  };

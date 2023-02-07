@@ -1,6 +1,9 @@
-const express = require('express')  
-
 require('dotenv').config()
+
+const express = require('express') 
+const cookieParser = require('cookie-parser'); 
+
+
 
 const userRouter = require('./routes/userRoute')
 
@@ -8,7 +11,7 @@ const app = express()
 
 
 app.use(express.json());
-
+app.use(cookieParser())
 
 //routes
 app.get('/', (req,res) => {
@@ -24,6 +27,11 @@ app.use('*', (req, res) => {
 //Error-handling middleware
 app.use((err, req, res, next) => {
     console.log(err)
+    // if (err.code === 11000) {
+    //   const errorStatus = 400,
+    //     err= "Email already exists"
+    // }
+  
     const errorStatus = err.status || 500
     res.status(errorStatus).send(err.message)
     next()

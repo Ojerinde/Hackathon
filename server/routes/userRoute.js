@@ -13,5 +13,8 @@ userRouter
     .post('/login',
     userValidation.LoginValidation,userController.login )
 
+userRouter
+.get('/logout', userController.logout);
+
 
 module.exports = userRouter
