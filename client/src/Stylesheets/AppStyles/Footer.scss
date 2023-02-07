@@ -1,0 +1,118 @@
+.footer {
+  background-color: $primary-color;
+  padding: 5rem 3rem;
+  text-align: center;
+
+  & div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3.5rem;
+
+    & .left,
+    & .right {
+      display: flex;
+      list-style: none;
+    }
+
+    & .left {
+      flex-basis: 40%;
+      justify-content: space-around;
+      & li {
+        & a:link,
+        & a:visited {
+          text-decoration: none;
+          font-size: 1.8rem;
+          color: $secondary-color;
+          padding: 0.8rem 1.3rem;
+          border: 0.1rem solid rgba($secondary-dark-color, 0.7);
+          border-radius: 1rem;
+          display: block;
+          box-shadow: $box-shadow;
+          transition: all 0.3s;
+        }
+
+        & a:hover {
+          color: $secondary-light-color;
+          background-color: $primary-light-color;
+          transform: skewY(3deg);
+        }
+        & a:active {
+          background-color: $primary-dark-color;
+          transform: skewY(1deg);
+        }
+      }
+    }
+    @media only screen and (max-width: $bp--large) {
+      & .left {
+        flex-basis: 60%;
+      }
+    }
+    @media only screen and (max-width: $bp--small) {
+      & .left {
+        flex-basis: 65%;
+      }
+    }
+    & .right {
+      flex-basis: 20%;
+      justify-content: space-evenly;
+    }
+
+    @media only screen and (max-width: $bp--small) {
+      & .right {
+        flex-basis: 30%;
+      }
+    }
+  }
+
+  & p {
+    width: 65%;
+    margin: 0 auto;
+    font-size: 2rem;
+    color: $secondary-dark-color;
+  }
+  @media only screen and (max-width: $bp--large) {
+    & p {
+      width: 70%;
+    }
+  }
+  @media only screen and (max-width: $bp--small) {
+    & p {
+      width: 75%;
+    }
+  }
+}
+
+.icon {
+  height: 3rem;
+  width: 3rem;
+  fill-opacity: 0.6;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &__git {
+    fill: #171515;
+
+    fill-opacity: 0.7;
+    &:hover {
+      fill-opacity: 1;
+    }
+  }
+  &__twit {
+    fill: #1da1f2;
+
+    &:hover {
+      fill-opacity: 1;
+    }
+  }
+  &__lin {
+    fill: #0072b1;
+
+    &:hover {
+      fill-opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.section {
+  height: 95vh;
+}
+.h2 {
+  font-size: 4.5rem;
+  background: linear-gradient(
+    to left bottom,
+    rgba(114, 79, 150, 0.857),
+    rgba(80, 46, 113, 0.857)
+  );
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 5rem;
+}
+
+.button {
+  border-radius: 1rem !important;
+  padding: 1.5rem 4rem !important;
+  background: linear-gradient(
+    to left bottom,
+    rgba(114, 79, 150, 0.857),
+    rgba(80, 46, 113, 0.857)
+  ) !important ;
+}
+.button:hover {
+  background: linear-gradient(
+    to left bottom,
+    rgba(80, 46, 113, 0.857),
+    rgba(114, 79, 150, 0.857)
+  ) !important;
+}
