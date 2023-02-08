@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { io } from "socket.io-client";
 
 const socket = io("https://chatapp-cktm.onrender.com", {
-  transports: ["websocket", "polling"],
+  transports: ["websocket"],
   autoConnect: false,
 });
 
