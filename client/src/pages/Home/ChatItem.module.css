@@ -1,0 +1,44 @@
+.li {
+  margin: 0.7rem 0;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: rgba(17, 25, 40, 0.264);
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.div {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 1rem;
+  height: 3.3rem;
+  width: 3.3rem;
+  fill: rgb(236, 227, 244);
+  cursor: pointer;
+}
+
+.p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: rgb(236, 227, 244);
+  letter-spacing: 0.05rem;
+}
+
+.time {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgb(222, 194, 246);
+}
+
+.message {
+  margin-top: 0.4rem;
+  font-weight: 300;
+  font-size: 1.2rem;
+  color: rgb(222, 194, 246);
+}
