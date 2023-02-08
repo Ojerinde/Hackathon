@@ -1,11 +1,23 @@
-import Card from "../../components/UI/Card/Card";
+import { useContext, useRef } from "react";
+import { FaChevronLeft, FaEllipsisV } from "react-icons/fa";
 
 import "./Chat.scss";
-import pic from "../../assests/pic.jpg";
-import { FaChevronLeft, FaEllipsisV } from "react-icons/fa";
+import pic from "../../assests/pic.png";
+import { DataContext } from "../../store/DataContext";
+import Card from "../../components/UI/Card/Card";
+
 import { useNavigate } from "react-router-dom";
 
 const Chat = () => {
+  const { socket, msgs, currChat } = useContext(DataContext);
+  const msgRef = useRef("");
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const msg = msgRef.current.value?.trim();
+    msgRef.current.value = "";
+    const userID = currChat.userID;
+    socket.emit("Private Msg", msg, userID);
+  };
   const navigate = useNavigate();
   return (
     <Card>
@@ -20,7 +32,7 @@ const Chat = () => {
           <div className="chat__banner-info">
             <img src={pic} alt="User profile pic" />
             <p>
-              <span>Jasmine Johnson</span>
+              <span>{currChat.email}</span>
               <span>Online</span>
             </p>
           </div>
@@ -28,16 +40,21 @@ const Chat = () => {
             <FaEllipsisV className="chat__banner-icon" />
           </span>
         </div>
-        <div className="chat__bubble chat__bubble-receive">lorem</div>
-        <div className="chat__bubble chat__bubble-send">radom</div>
-        <div className="chat__bubble chat__bubble-send">radom</div>
-        <div className="chat__bubble chat__bubble-receive">lorem</div>
-        <div className="chat__bubble chat__bubble-send">radom</div>
-        <div className="chat__bubble chat__bubble-receive">lorem</div>
-        <div className="chat__bubble chat__bubble-send">radom</div>
-        <div className="chat__field">
-          <input type="text" placeholder="Message" />
-        </div>
+        {msgs.map((msg, index) => {
+          return (
+            <div
+              key={index}
+              className={`chat__bubble chat__bubble-${
+                msg.received ? "receive" : "send"
+              }`}
+            >
+              {msg.msg}
+            </div>
+          );
+        })}
+        <form action="" onSubmit={submitHandler} className="chat__field">
+          <input type="text" placeholder="Message" ref={msgRef} />
+        </form>
       </div>
     </Card>
   );
