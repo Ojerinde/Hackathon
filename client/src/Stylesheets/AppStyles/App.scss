@@ -7,7 +7,7 @@ body {
 .fallback {
   &__box {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     @include flex-center;
   }
   &__spinner {

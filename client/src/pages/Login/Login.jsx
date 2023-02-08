@@ -15,21 +15,14 @@ const Login = () => {
   const { isLoading, error, fetchRequest: LoginRequest } = useFetch();
 
   // A function that will get response from the request made
-  const getResponseData = useCallback(
-    (responseObj) => {
-      if (responseObj?.message === "Logged in Successfully") {
-        navigate("/server");
-      } else {
-        console.log(responseObj, "error");
-      }
-    },
-    [navigate]
-  );
+  const getResponseData = useCallback((responseObj) => {
+    console.log(responseObj);
+  }, []);
 
   const signInHandler = async (formData) => {
     LoginRequest(
       {
-        url: "#",
+        url: "https://chatapp-cktm.onrender.com/api/v1/users/login",
         method: "POST",
         body: formData,
         headers: {

@@ -11,26 +11,48 @@ const Form = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordIcon] = useState(true);
   const [form, setForm] = useState({
-    username: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
-    nameIsValid: false,
+    confirmpassword: "",
+    firstnameIsValid: false,
+    lastnameIsValid: false,
     emailIsValid: false,
     passwordIsValid: false,
-    nameIsFocus: false,
+    confirmpasswordIsValid: false,
+    firstnameIsFocus: false,
+    lastnameIsFocus: false,
     emailIsFocus: false,
-    passwordIsFocus: false,
+    confirmpasswordIsFocus: false,
     formIsValid: false,
   });
 
-  const nameOnChangeHandler = (e) => {
+  const firstnameOnChangeHandler = (e) => {
     setForm((prev) => {
-      return { ...prev, username: e.target.value };
+      return { ...prev, firstname: e.target.value };
     });
-    const { nameIsValid } = form;
+    const { firstnameIsValid } = form;
     const isValid = e.target.value.length > 3 || e.target.value.length < 10;
 
-    if (nameIsValid && isValid) {
+    if (firstnameIsValid && isValid) {
+      setForm((prev) => {
+        return { ...prev, formIsValid: true };
+      });
+    } else {
+      setForm((prev) => {
+        return { ...prev, formIsValid: false };
+      });
+    }
+  };
+  const lastnameOnChangeHandler = (e) => {
+    setForm((prev) => {
+      return { ...prev, lastname: e.target.value };
+    });
+    const { lastnameIsValid } = form;
+    const isValid = e.target.value.length > 3 || e.target.value.length < 10;
+
+    if (lastnameIsValid && isValid) {
       setForm((prev) => {
         return { ...prev, formIsValid: true };
       });
@@ -77,20 +99,53 @@ const Form = (props) => {
       });
     }
   };
-
-  // Allowing the user to unfocus the input field before checking if the input field is correct.
-  const nameOnBlurHandler = (e) => {
+  const confirmpasswordOnChangeHandler = (e) => {
     setForm((prev) => {
-      return { ...prev, nameIsFocus: true };
+      return { ...prev, confirmpassword: e.target.value };
     });
 
-    if (form.username.length >= 3 && form.username.length <= 8) {
+    const { emailIsValid } = form;
+    const isValid = e.target.value === form.password;
+
+    if (emailIsValid && isValid) {
       setForm((prev) => {
-        return { ...prev, nameIsValid: true };
+        return { ...prev, formIsValid: true };
       });
     } else {
       setForm((prev) => {
-        return { ...prev, nameIsValid: false };
+        return { ...prev, formIsValid: false };
+      });
+    }
+  };
+
+  // Allowing the user to unfocus the input field before checking if the input field is correct.
+  const firstnameOnBlurHandler = (e) => {
+    setForm((prev) => {
+      return { ...prev, firstnameIsFocus: true };
+    });
+
+    if (form.firstname.length >= 3 && form.firstname.length <= 8) {
+      setForm((prev) => {
+        return { ...prev, firstnameIsValid: true };
+      });
+    } else {
+      setForm((prev) => {
+        return { ...prev, firstnameIsValid: false };
+      });
+    }
+  };
+  const lastnameOnBlurHandler = (e) => {
+    setForm((prev) => {
+      return { ...prev, lastnameIsFocus: true };
+    });
+
+    if (form.lastname.length >= 3 && form.lastname.length <= 8) {
+      setForm((prev) => {
+        return { ...prev, lastnameIsValid: true };
+      });
+    } else {
+      setForm((prev) => {
+        return { ...prev, lastnameIsValid: false };
       });
     }
   };
@@ -129,27 +184,50 @@ const Form = (props) => {
     }
   };
 
+  const confirmpasswordOnBlurHandler = (e) => {
+    setForm((prev) => {
+      return { ...prev, passwordIsFocus: true };
+    });
+
+    const isValid = form.password === form.confirmpassword;
+    if (isValid) {
+      setForm((prev) => {
+        return { ...prev, confirmpasswordIsValid: true };
+      });
+    } else {
+      setForm((prev) => {
+        return { ...prev, confirmpasswordIsValid: false };
+      });
+    }
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
 
     // Send form details to backend
     props.onSubmit({
-      name: form.username,
+      first_name: form.firstname,
+      last_name: form.lastname,
       email: form.email,
       password: form.password,
+      repeat_password: form.password,
     });
 
     // Clearing the input fields
     setForm({
-      username: "",
+      firstname: "",
+      lastname: "",
       email: "",
       password: "",
-      nameIsValid: false,
+      confirmpassword: "",
+      firstnameIsValid: false,
       emailIsValid: false,
       passwordIsValid: false,
+      confirmpasswordIsValid: false,
       nameIsFocus: false,
       emailIsFocus: false,
       passwordIsFocus: false,
+      confirmpasswordIsFocus: false,
       formIsValid: false,
     });
   };
@@ -161,18 +239,33 @@ const Form = (props) => {
       data-testid="login__form"
     >
       <Input
-        id="username"
-        label="Username"
+        id="lastname"
+        label="Last Name"
         type="text"
-        invalid={!form.nameIsValid && form.nameIsFocus ? "invalid" : ""}
-        placeholder="Enter your username"
-        value={form.username}
-        onChange={nameOnChangeHandler}
-        onBlur={nameOnBlurHandler}
+        invalid={!form.lastnameIsValid && form.lastname ? "invalid" : ""}
+        placeholder="Enter your lastname"
+        value={form.lastname}
+        onChange={lastnameOnChangeHandler}
+        onBlur={lastnameOnBlurHandler}
       />
-      {form.nameIsFocus && !form.nameIsValid && (
+      {form.lastname && !form.lastnameIsValid && (
         <pre className={classes.invalid__input}>
-          Enter a username of length above 3 & not more than 8
+          Enter a lastname of length above 3 & not more than 8
+        </pre>
+      )}
+      <Input
+        id="firstname"
+        label="First Name"
+        type="text"
+        invalid={!form.firstnameIsValid && form.nameIsFocus ? "invalid" : ""}
+        placeholder="Enter your firstname"
+        value={form.firstname}
+        onChange={firstnameOnChangeHandler}
+        onBlur={firstnameOnBlurHandler}
+      />
+      {form.nameIsFocus && !form.firstnameIsValid && (
+        <pre className={classes.invalid__input}>
+          Enter a firstname of length above 3 & not more than 8
         </pre>
       )}
       <Input
@@ -202,6 +295,28 @@ const Form = (props) => {
         setShowPassword={setShowPassword}
       />
       {form.passwordIsFocus && !form.passwordIsValid && (
+        <pre className={classes.invalid__input}>
+          MinLength(8), uppercase, lowercase, character, number
+        </pre>
+      )}
+      <Input
+        id="confirmpassword"
+        label="Confirm Password"
+        type={showPassword ? "text" : "password"}
+        invalid={
+          !form.confirmpasswordIsValid && form.confirmpasswordIsFocus
+            ? "invalid"
+            : ""
+        }
+        placeholder="e.g, Password@1234"
+        value={form.confirmpassword}
+        onChange={confirmpasswordOnChangeHandler}
+        onBlur={confirmpasswordOnBlurHandler}
+        passwordIcon={passwordIcon}
+        showPassword={showPassword}
+        setShowPassword={setShowPassword}
+      />
+      {form.confirmpasswordIsFocus && !form.confirmpasswordIsValid && (
         <pre className={classes.invalid__input}>
           MinLength(8), uppercase, lowercase, character, number
         </pre>
