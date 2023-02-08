@@ -18,7 +18,7 @@ const Chats = () => {
       {users.map((item) => (
         <ChatItem
           key={item.userID}
-          username={item.username}
+          email={item.email}
           userID={item.userID}
           // message={item.message}
           // time={item.time}

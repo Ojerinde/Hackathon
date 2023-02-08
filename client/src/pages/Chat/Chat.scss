@@ -3,6 +3,7 @@
   flex-direction: column;
   &__banner {
     display: flex;
+    margin-bottom: 1rem;
     & > span {
       display: inline-block;
       display: flex;
@@ -50,13 +51,11 @@
     }
   }
   &__field {
+    margin-top: 1.2rem;
     padding: 0.4rem;
-    & > * {
-      background-color: rgb(187, 185, 185);
-      cursor: pointer;
-    }
 
     & > input {
+      cursor: pointer;
       display: inline-block;
       border-radius: 5px;
       width: 100%;
@@ -83,10 +82,10 @@
     background-color: aqua;
     border-radius: 6px;
     &-receive {
-      align-self: flex-end;
+      align-self: flex-start;
     }
     &-send {
-      align-self: flex-start;
+      align-self: flex-end;
     }
   }
 }

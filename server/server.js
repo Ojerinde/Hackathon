@@ -13,26 +13,34 @@ const io = new Server(httpServer, {
   },
 });
 io.use((socket, next) => {
-  const username = socket.handshake.auth.username;
-  if (!username) {
-    return next(new Error("invalid username"));
+  const email = socket.handshake.auth.email;
+  if (!email) {
+    return next(new Error("invalid email"));
   }
-  socket.username = username;
+  socket.email = email;
   next();
 });
 io.on("connection", (socket) => {
+  socket.join(socket.id);
   const users = [];
   for (let [id, socket] of io.of("/").sockets) {
     users.push({
       userID: id,
-      username: socket.username,
+      email: socket.email,
     });
   }
   socket.emit("users", users);
   // notify existing users
   socket.broadcast.emit("user connected", {
     userID: socket.id,
-    username: socket.username,
+    email: socket.email,
+  });
+  socket.on("Join private room", (userID) => {
+    socket.join(userID);
+  });
+  socket.on("Private Msg", (msg, userID) => {
+    console.log(msg, userID);
+    io.to(userID).emit("send msg", { msg, userID });
   });
 });
 const PORT = process.env.PORT,
