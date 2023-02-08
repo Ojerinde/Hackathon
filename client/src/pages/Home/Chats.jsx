@@ -1,28 +1,27 @@
+import { useContext, useEffect } from "react";
+import { DataContext } from "../../store/DataContext";
 import ChatItem from "./ChatItem";
 import classes from "./Chats.module.css";
 const Chats = () => {
-  const DummyData = [
-    {
-      name: "Joel Ojerinde",
-      message: "Hello",
-      time: "2023-01-03T21:31:17.178Z",
-    },
-    {
-      name: "Bolaji Ojerinde",
-      message: "What is up?",
-      time: "2023-06-03T21:31:17.178Z",
-    },
-  ];
+  const { socket, users, getUsers, updateUsers } = useContext(DataContext);
+  useEffect(() => {
+    getUsers();
+  }, [getUsers]);
 
+  useEffect(() => {
+    socket.on("user connected", (user) => {
+      updateUsers(user);
+    });
+  }, [updateUsers, socket]);
   return (
     <ul className={classes.ul}>
-      {DummyData.map((item, index) => (
+      {users.map((item) => (
         <ChatItem
-          key={index}
-          name={item.name}
-          userId={index}
-          message={item.message}
-          time={item.time}
+          key={item.userID}
+          username={item.username}
+          userID={item.userID}
+          // message={item.message}
+          // time={item.time}
         />
       ))}
     </ul>
