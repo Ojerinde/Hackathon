@@ -1,7 +1,7 @@
 {
   "name": "hackhaton",
   "version": "0.1.0",
-  "homepage": "https://Ojerinde.github.io/Hackathon",
+  "homepage": "https://ojerinde.github.io/Hackathon",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
