@@ -13,6 +13,7 @@ import AppHome from "./pages/Home/AppHome";
 import Home from "./pages/Home/Home";
 import Card from "./components/UI/Card/Card";
 import Profile from "./pages/Profile/Profile";
+import Chat from "./pages/Chat/Chat";
 
 // Dynamic Imports (Lazy - loading)
 
@@ -46,6 +47,7 @@ const App = () => {
       >
         <Routes>
           <Route path="/" element={<GetStarted />} />
+          <Route path="/chat" element={<Chat />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           {/* Nexted routes */}
