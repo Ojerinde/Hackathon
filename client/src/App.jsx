@@ -47,13 +47,12 @@ const App = () => {
       >
         <Routes>
           <Route path="/" element={<GetStarted />} />
-          <Route path="/chat" element={<Chat />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           {/* Nexted routes */}
-          <Route path="/home" element={<AppHome />}>
-            <Route path="" element={<Home />} /> chat
-            <Route path=":userId" element={<div>Chat opened</div>} />{" "}
+          <Route path="/chats" element={<AppHome />}>
+            <Route path="" element={<Home />} />
+            <Route path=":userId" element={<Chat />} />{" "}
           </Route>
           <Route path="/profile" element={<Profile />} />{" "}
           {/* Routes that will be matched if none of tthe route(s) is matched */}

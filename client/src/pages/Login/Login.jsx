@@ -1,8 +1,9 @@
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Card from "../../components/UI/Card/Card";
 
 import useFetch from "../../hooks/useFetch";
+import { DataContext } from "../../store/DataContext";
 
 import Form from "./Form";
 
@@ -10,7 +11,7 @@ import classes from "./Login.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const { socket } = useContext(DataContext);
   // Using a custom hook
   const { isLoading, error, fetchRequest: LoginRequest } = useFetch();
 
@@ -18,12 +19,14 @@ const Login = () => {
   const getResponseData = useCallback(
     (responseObj) => {
       if (responseObj?.message === "Logged in Successfully") {
-        navigate("/server");
+        navigate("/chats");
+        socket.auth = { username: "beejhay" };
+        socket.connect();
       } else {
         console.log(responseObj, "error");
       }
     },
-    [navigate]
+    [navigate, socket]
   );
 
   const signInHandler = async (formData) => {
