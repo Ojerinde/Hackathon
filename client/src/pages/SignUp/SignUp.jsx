@@ -14,12 +14,11 @@ const SignUp = () => {
   // A function that will get response from the request made
   const getResponseData = useCallback(
     (responseObj) => {
-      console.log(responseObj);
       if (responseObj.status === "success") {
         navigate("/login");
         localStorage.setItem(
-          "login_token",
-          JSON.stringify({ token: responseObj.token })
+          "signup_token",
+          JSON.stringify({ signup_token: responseObj.token })
         );
       }
     },

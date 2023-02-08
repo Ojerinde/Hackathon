@@ -15,9 +15,18 @@ const Login = () => {
   const { isLoading, error, fetchRequest: LoginRequest } = useFetch();
 
   // A function that will get response from the request made
-  const getResponseData = useCallback((responseObj) => {
-    console.log(responseObj);
-  }, []);
+  const getResponseData = useCallback(
+    (responseObj) => {
+      if (responseObj.status === "success") {
+        navigate("/chats");
+        localStorage.setItem(
+          "login_token",
+          JSON.stringify({ login_token: responseObj.token })
+        );
+      }
+    },
+    [navigate]
+  );
 
   const signInHandler = async (formData) => {
     LoginRequest(

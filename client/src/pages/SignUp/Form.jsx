@@ -214,22 +214,22 @@ const Form = (props) => {
     });
 
     // Clearing the input fields
-    setForm({
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      confirmpassword: "",
-      firstnameIsValid: false,
-      emailIsValid: false,
-      passwordIsValid: false,
-      confirmpasswordIsValid: false,
-      nameIsFocus: false,
-      emailIsFocus: false,
-      passwordIsFocus: false,
-      confirmpasswordIsFocus: false,
-      formIsValid: false,
-    });
+    // setForm({
+    //   firstname: "",
+    //   lastname: "",
+    //   email: "",
+    //   password: "",
+    //   confirmpassword: "",
+    //   firstnameIsValid: false,
+    //   emailIsValid: false,
+    //   passwordIsValid: false,
+    //   confirmpasswordIsValid: false,
+    //   nameIsFocus: false,
+    //   emailIsFocus: false,
+    //   passwordIsFocus: false,
+    //   confirmpasswordIsFocus: false,
+    //   formIsValid: false,
+    // });
   };
 
   return (
@@ -248,7 +248,7 @@ const Form = (props) => {
         onChange={lastnameOnChangeHandler}
         onBlur={lastnameOnBlurHandler}
       />
-      {form.lastname && !form.lastnameIsValid && (
+      {form.lastnameIsFocus && !form.lastnameIsValid && (
         <pre className={classes.invalid__input}>
           Enter a lastname of length above 3 & not more than 8
         </pre>
@@ -263,7 +263,7 @@ const Form = (props) => {
         onChange={firstnameOnChangeHandler}
         onBlur={firstnameOnBlurHandler}
       />
-      {form.nameIsFocus && !form.firstnameIsValid && (
+      {form.firstnameIsFocus && !form.firstnameIsValid && (
         <pre className={classes.invalid__input}>
           Enter a firstname of length above 3 & not more than 8
         </pre>
