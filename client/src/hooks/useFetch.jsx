@@ -49,13 +49,21 @@ const useFetch = () => {
 
         // Send the data to the function that will use it
         getRequestData(responseBody);
-        
       } catch (err) {
         // If an error occured, set the error state
         dispatchFn({
           type: "ERROR",
           value: { hasError: true, message: err.message || "An error ocurred" },
         });
+        setTimeout(() => {
+          dispatchFn({
+            type: "ERROR",
+            value: {
+              hasError: false,
+              message: "",
+            },
+          });
+        }, 2000);
       }
       // After the request has been made, set the loading state to false
       dispatchFn({ type: "LOADING", value: false });
@@ -70,4 +78,3 @@ const useFetch = () => {
   return { isLoading, error, hideModal, fetchRequest };
 };
 export default useFetch;
-

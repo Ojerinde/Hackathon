@@ -18,12 +18,14 @@ const Login = () => {
   // A function that will get response from the request made
   const getResponseData = useCallback(
     (responseObj) => {
-      if (responseObj?.message === "Logged in Successfully") {
+      if (responseObj.status === "success") {
         navigate("/chats");
         socket.auth = { username: "beejhay" };
         socket.connect();
-      } else {
-        console.log(responseObj, "error");
+        localStorage.setItem(
+          "login_token",
+          JSON.stringify({ login_token: responseObj.token })
+        );
       }
     },
     [navigate, socket]
@@ -32,7 +34,7 @@ const Login = () => {
   const signInHandler = async (formData) => {
     LoginRequest(
       {
-        url: "#",
+        url: "https://chatapp-cktm.onrender.com/api/v1/users/login",
         method: "POST",
         body: formData,
         headers: {
