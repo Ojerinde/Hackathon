@@ -2,15 +2,20 @@ import Card from "../../components/UI/Card/Card";
 
 import "./Chat.scss";
 import pic from "../../assests/pic.jpg";
-import { FaChevronLeft, FaEllipsisV, FaRegSmile } from "react-icons/fa";
+import { FaChevronLeft, FaEllipsisV } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Chat = () => {
+  const navigate = useNavigate();
   return (
     <Card>
       <div className="chat">
         <div className="chat__banner">
           <span>
-            <FaChevronLeft className="chat__banner-icon" />
+            <FaChevronLeft
+              className="chat__banner-icon"
+              onClick={() => navigate("/chats")}
+            />
           </span>
           <div className="chat__banner-info">
             <img src={pic} alt="User profile pic" />
