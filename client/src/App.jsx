@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 
 import { ErrorBoundary } from "react-error-boundary";
 import { ImSpinner6 } from "react-icons/im";
@@ -55,6 +55,7 @@ const App = () => {
             <Route path=":userId" element={<Chat />} />{" "}
           </Route>
           <Route path="/profile" element={<Profile />} />{" "}
+          <Route path="/Hackathon" element={<Navigate to="/" />} />
           {/* Routes that will be matched if none of tthe route(s) is matched */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
