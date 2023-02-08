@@ -20,7 +20,6 @@ const Login = () => {
   // A function that will get response from the request made
   const getResponseData = useCallback(
     (responseObj) => {
-      console.log(responseObj);
       if (responseObj.status === "success") {
         navigate("/chats");
         socket.auth = { email };

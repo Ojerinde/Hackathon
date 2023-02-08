@@ -16,10 +16,6 @@ socket.on("connect_error", (err) => {
   }
 });
 
-// socket.on("send msg", ({ msg, userID }) => {
-//   console.log("🎯", msg, userID);
-// });
-
 // Creating an app wide state store using the context API
 export const DataContext = React.createContext({
   socket,
@@ -50,7 +46,6 @@ const DataContextProvider = (props) => {
   }, []);
   useMemo(() => {
     socket.on("send msg", ({ msg, userID }) => {
-      console.log("🎯", msg, userID);
       const newMsg = {
         msg,
         received: socket.id === userID,

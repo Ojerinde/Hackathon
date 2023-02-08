@@ -39,7 +39,6 @@ io.on("connection", (socket) => {
     socket.join(userID);
   });
   socket.on("Private Msg", (msg, userID) => {
-    console.log(msg, userID);
     io.to(userID).emit("send msg", { msg, userID });
   });
 });

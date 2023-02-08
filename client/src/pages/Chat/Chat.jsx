@@ -6,6 +6,8 @@ import pic from "../../assests/pic.png";
 import { DataContext } from "../../store/DataContext";
 import Card from "../../components/UI/Card/Card";
 
+import { useNavigate } from "react-router-dom";
+
 const Chat = () => {
   const { socket, msgs, currChat } = useContext(DataContext);
   const msgRef = useRef("");
@@ -16,12 +18,16 @@ const Chat = () => {
     const userID = currChat.userID;
     socket.emit("Private Msg", msg, userID);
   };
+  const navigate = useNavigate();
   return (
     <Card>
       <div className="chat">
         <div className="chat__banner">
           <span>
-            <FaChevronLeft className="chat__banner-icon" />
+            <FaChevronLeft
+              className="chat__banner-icon"
+              onClick={() => navigate("/chats")}
+            />
           </span>
           <div className="chat__banner-info">
             <img src={pic} alt="User profile pic" />
