@@ -9,16 +9,16 @@
 }
 
 .icon {
-  margin-right: 6rem;
   height: 4rem;
   width: 4rem;
   fill: rgb(181, 133, 227);
   cursor: pointer;
 }
 .p {
+  flex-basis: 100%;
+  text-align: center;
   font-size: 3rem;
   font-weight: 500;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: rgb(181, 133, 227);
   letter-spacing: 0.1rem;
 }

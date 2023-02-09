@@ -3,6 +3,7 @@
   flex-direction: column;
   &__banner {
     display: flex;
+    margin-bottom: 1rem;
     & > span {
       display: inline-block;
       display: flex;
@@ -50,18 +51,17 @@
     }
   }
   &__field {
+    margin-top: 1.2rem;
     padding: 0.4rem;
-    & > * {
-      background-color: rgb(187, 185, 185);
-      cursor: pointer;
-    }
 
     & > input {
+      cursor: pointer;
       display: inline-block;
       border-radius: 5px;
       width: 100%;
       padding: 0.8rem;
       border: 0;
+
       &::placeholder {
         font: inherit;
         color: white;
@@ -77,16 +77,18 @@
     }
   }
   &__bubble {
-    padding: 1rem;
+    font-size: 24px;
+    padding: 0.5rem;
+    padding-right: 3rem;
     margin: 0.5rem 0;
-    width: 40%;
     background-color: aqua;
     border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     &-receive {
-      align-self: flex-end;
+      align-self: flex-start;
     }
     &-send {
-      align-self: flex-start;
+      align-self: flex-end;
     }
   }
 }

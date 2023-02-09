@@ -9,7 +9,7 @@ const Header = () => {
         className={classes.icon}
         onClick={() => navigate("/profile")}
       />
-      <p className={classes.p}>Messages</p>
+      <p className={classes.p}>Chats</p>
     </nav>
   );
 };

@@ -9,6 +9,8 @@ import Form from "./Form";
 
 import classes from "./Login.module.css";
 
+let email;
+
 const Login = () => {
   const navigate = useNavigate();
   const { socket } = useContext(DataContext);
@@ -20,7 +22,7 @@ const Login = () => {
     (responseObj) => {
       if (responseObj.status === "success") {
         navigate("/chats");
-        socket.auth = { username: "beejhay" };
+        socket.auth = { email };
         socket.connect();
         localStorage.setItem(
           "login_token",
@@ -32,6 +34,7 @@ const Login = () => {
   );
 
   const signInHandler = async (formData) => {
+    email = formData.email;
     LoginRequest(
       {
         url: "https://chatapp-cktm.onrender.com/api/v1/users/login",
