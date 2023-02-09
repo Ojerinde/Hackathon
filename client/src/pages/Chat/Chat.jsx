@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const Chat = () => {
   const { socket, msgs, currChat } = useContext(DataContext);
+  const navigate = useNavigate();
   const msgRef = useRef("");
   const submitHandler = (e) => {
     e.preventDefault();
@@ -18,7 +19,6 @@ const Chat = () => {
     const userID = currChat.userID;
     socket.emit("Private Msg", msg, userID);
   };
-  const navigate = useNavigate();
   return (
     <Card>
       <div className="chat">

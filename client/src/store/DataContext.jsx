@@ -49,7 +49,7 @@ const DataContextProvider = (props) => {
     socket.on("send msg", ({ msg, userID }) => {
       const newMsg = {
         msg,
-        received: socket.id === userID,
+        received: socket.id === userID && users.length > 1,
       };
       setMsgs((prevMsgs) => [...prevMsgs, newMsg]);
     });
