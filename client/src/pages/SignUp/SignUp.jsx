@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Card from "../../components/UI/Card/Card";
 
 import useFetch from "../../hooks/useFetch";
 
@@ -42,7 +41,7 @@ const SignUp = () => {
 
   return (
     <>
-      <Card className={classes.login}>
+      <div className={classes.login}>
         <h1 className={classes.h1}>Hello!</h1>
         <Form onSubmit={signUpHandler} isLoading={isLoading} error={error} />
         <p className={classes.p}>
@@ -51,7 +50,7 @@ const SignUp = () => {
             Login
           </Link>
         </p>
-      </Card>
+      </div>
     </>
   );
 };

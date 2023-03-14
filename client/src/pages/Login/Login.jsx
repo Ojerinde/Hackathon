@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Card from "../../components/UI/Card/Card";
 
 import useFetch from "../../hooks/useFetch";
 import { DataContext } from "../../store/DataContext";
@@ -47,7 +46,7 @@ const Login = () => {
 
   return (
     <>
-      <Card className={classes.login} data-testid="login__page">
+      <div className={classes.login} data-testid="login__page">
         <h1 className={classes.h1}>Welcome back!</h1>
         <Form onSubmit={signInHandler} isLoading={isLoading} error={error} />
         <p className={classes.p}>
@@ -56,7 +55,7 @@ const Login = () => {
             Create now
           </Link>
         </p>
-      </Card>
+      </div>
     </>
   );
 };

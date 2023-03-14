@@ -21,3 +21,9 @@
 .button:hover {
   background: linear-gradient(to left bottom, #44607c, #5f6a74) !important;
 }
+
+@media only screen and (max-width: 650px) {
+  .section {
+    text-align: center;
+  }
+}
