@@ -3,7 +3,6 @@ import { BsPersonCircle } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../store/DataContext";
 import classes from "./ChatItem.module.css";
-import { formatdate } from "./lib";
 const ChatItem = ({ email, userID }) => {
   const { socket, updateCurrChat } = useContext(DataContext);
   const navigate = useNavigate();

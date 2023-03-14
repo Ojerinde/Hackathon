@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { ValidatePassword, ValidateEmail } from "../SignUp/lib";
+import { ValidatePassword, ValidateEmail } from "../../lib/Validations";
 
-import Input from "./Input";
-import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
+import Input from "./LoginInput";
 import Button from "../../components/UI/Button/Button";
 
-import classes from "./Form.module.css";
-const Form = (props) => {
+import classes from "./LoginForm.module.css";
+import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
+const Form = ({ onSubmit, error, isLoading }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordIcon] = useState(true);
   const [form, setForm] = useState({
@@ -18,12 +18,12 @@ const Form = (props) => {
     passwordIsFocus: false,
   });
 
+  // Two - way binding implementation.
   const emailOnChangeHandler = (e) => {
     setForm((prev) => {
       return { ...prev, email: e.target.value };
     });
   };
-
   const passwordOnChangeHandler = (e) => {
     setForm((prev) => {
       return { ...prev, password: e.target.value };
@@ -31,7 +31,6 @@ const Form = (props) => {
   };
 
   // Allowing the user to unfocus the input field before checking if the input field is correct.
-
   const emailOnBlurHandler = (e) => {
     setForm((prev) => {
       return { ...prev, emailIsFocus: true };
@@ -68,9 +67,11 @@ const Form = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    const { emailIsValid, passwordIsValid } = form;
+    if (!emailIsValid || !passwordIsValid) return;
 
     // Send form details to parent component
-    props.onSubmit({
+    onSubmit({
       email: form.email,
       password: form.password,
     });
@@ -109,19 +110,16 @@ const Form = (props) => {
           MinLength(8), uppercase, lowercase, character, number
         </pre>
       )}
-
-      <div style={{ margin: "3rem 0 0" }}>
-        {props.isLoading && <LoadingSpinner />}
-        {!props.isLoading && props.error.hasError && (
-          <p className={classes.error__message}>
-            {`Sign in failed! - ${props.error.message}`}
-          </p>
+      <div>
+        {isLoading && <LoadingSpinner />}
+        {error.hasError && (
+          <p className={classes.error__message}>{error.message}</p>
         )}
       </div>
 
       <div className={classes.btn__box}>
         <Button id="btn__submit" type="submit" className={classes.button}>
-          Sign In
+          Login
         </Button>
       </div>
     </form>

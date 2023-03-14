@@ -5,8 +5,8 @@ import Card from "../../components/UI/Card/Card";
 import useFetch from "../../hooks/useFetch";
 
 import Form from "./Form";
-
 import classes from "./SignUp.module.css";
+
 const SignUp = () => {
   const navigate = useNavigate();
   // Using a custom hook

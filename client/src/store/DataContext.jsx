@@ -53,6 +53,7 @@ const DataContextProvider = (props) => {
       };
       setMsgs((prevMsgs) => [...prevMsgs, newMsg]);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const data = {
     socket,
