@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Hackathon/static/css/main.5eeaeab9.css",
-    "main.js": "/Hackathon/static/js/main.edca7dbc.js",
+    "main.css": "/Hackathon/static/css/main.3314d482.css",
+    "main.js": "/Hackathon/static/js/main.800cacb2.js",
     "static/media/pic.png": "/Hackathon/static/media/pic.2fed797bb228db165eb4.png",
     "index.html": "/Hackathon/index.html",
-    "main.5eeaeab9.css.map": "/Hackathon/static/css/main.5eeaeab9.css.map",
-    "main.edca7dbc.js.map": "/Hackathon/static/js/main.edca7dbc.js.map"
+    "main.3314d482.css.map": "/Hackathon/static/css/main.3314d482.css.map",
+    "main.800cacb2.js.map": "/Hackathon/static/js/main.800cacb2.js.map"
   },
   "entrypoints": [
-    "static/css/main.5eeaeab9.css",
-    "static/js/main.edca7dbc.js"
+    "static/css/main.3314d482.css",
+    "static/js/main.800cacb2.js"
   ]
 }
