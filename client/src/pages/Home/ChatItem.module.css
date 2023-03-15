@@ -16,34 +16,29 @@
 
 .icon {
   margin-right: 1rem;
-  height: 3.3rem;
-  width: 3.3rem;
-  fill: rgb(236, 227, 244);
+  height: 4rem;
+  width: 4rem;
+  fill: #d8e1e3;
   cursor: pointer;
 }
 
 .p {
   font-size: 1.5rem;
   font-weight: 400;
-  color: rgb(236, 227, 244);
+  color: #d8e1e3;
   letter-spacing: 0.05rem;
-}
-
-.time {
-  font-size: 1.2rem;
-  font-weight: 300;
-  color: rgb(222, 194, 246);
 }
 
 .message {
   margin-top: 0.4rem;
   font-weight: 300;
   font-size: 1.2rem;
-  color: rgb(222, 194, 246);
+  color: #bbc9cd;
+  letter-spacing: 0.05rem;
 }
 
 .active-dot {
-  background-color: #009900;
+  background-color: #6df56dcd;
   width: 10px;
   height: 10px;
   border-radius: 50%;

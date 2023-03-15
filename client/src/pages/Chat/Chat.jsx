@@ -53,7 +53,8 @@ const Chat = () => {
           );
         })}
         <form action="" onSubmit={submitHandler} className="chat__field">
-          <input type="text" placeholder="Message" ref={msgRef} />
+          <input type="text" placeholder="Say something..." ref={msgRef} />
+          <button>Send</button>
         </form>
       </div>
     </Card>
